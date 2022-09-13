@@ -1,9 +1,7 @@
 package com.example.linkedin.controllers;
 
 import com.example.linkedin.model.Education;
-import com.example.linkedin.model.JobType;
 import com.example.linkedin.repositories.EducationRepository;
-import com.example.linkedin.repositories.JobTypeRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
