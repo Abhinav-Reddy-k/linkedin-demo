@@ -35,6 +35,11 @@ public class ExperienceController {
         return experienceRepository.findById(id).get();
     }
 
+    @GetMapping("/profile/{profileId}")
+    public List<Experience> getByProfile(@PathVariable Long profileId){
+        return experienceRepository.findByProfileId(profileId);
+    }
+
     @PostMapping
     public Experience createExperience(@RequestBody Experience experience) {
         return experienceRepository.save(experience);

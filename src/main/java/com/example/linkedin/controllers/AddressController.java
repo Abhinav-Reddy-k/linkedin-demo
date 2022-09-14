@@ -35,6 +35,11 @@ public class AddressController {
         return addressRepository.findById(id).get();
     }
 
+    @GetMapping("/profile/{profileId}")
+    public List<Address> getByProfile(@PathVariable Long profileId){
+        return addressRepository.findByProfileId(profileId);
+    }
+
     @PostMapping
     public Address createAddress(@RequestBody Address address) {
         return addressRepository.save(address);

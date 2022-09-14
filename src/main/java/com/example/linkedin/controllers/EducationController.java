@@ -27,6 +27,11 @@ public class EducationController {
         return educationRepository.findAll();
     }
 
+    @GetMapping("/profile/{profileId}")
+    public List<Education> getByProfile(@PathVariable Long profileId){
+        return educationRepository.findByProfileId(profileId);
+    }
+
     @GetMapping(value = "/{id}")
     public Education get(@PathVariable Long id) {
         return educationRepository.findById(id).get();

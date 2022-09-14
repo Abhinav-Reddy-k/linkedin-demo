@@ -1,5 +1,6 @@
 package com.example.linkedin.controllers;
 
+import com.example.linkedin.model.Address;
 import com.example.linkedin.model.Certifications;
 import com.example.linkedin.repositories.CertificationsRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +24,11 @@ public class CertificationsController {
     @GetMapping
     public List<Certifications> showAllCertifications() {
         return certificationsRepository.findAll();
+    }
+
+    @GetMapping("/profile/{profileId}")
+    public List<Certifications> getByProfile(@PathVariable Long profileId){
+        return certificationsRepository.findByProfileId(profileId);
     }
     @DeleteMapping("/{id}")
     public void deleteCertification(@PathVariable Long id) {

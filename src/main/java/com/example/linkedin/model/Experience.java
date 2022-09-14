@@ -15,6 +15,16 @@ public class Experience {
     private String companyName;
     private String jobRole;
 
+    private Long profileId;
+
+    public Long getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Long profileId) {
+        this.profileId = profileId;
+    }
+
     public String getCompanyName() {
         return companyName;
     }

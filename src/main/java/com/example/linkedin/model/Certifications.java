@@ -13,6 +13,13 @@ public class Certifications {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    private String name;
+    private String issuingOrganisation;
+    private String credentialUrl;
+    private String credentialId;
+    private Date issueDate;
+    private Date expirationDate;
+    private Long profileId;
 
     public String getName() {
         return name;
@@ -23,11 +30,11 @@ public class Certifications {
     }
 
     public String getIssuingOrganisation() {
-        return IssuingOrganisation;
+        return issuingOrganisation;
     }
 
     public void setIssuingOrganisation(String issuingOrganisation) {
-        IssuingOrganisation = issuingOrganisation;
+        this.issuingOrganisation = issuingOrganisation;
     }
 
     public String getCredentialUrl() {
@@ -69,14 +76,6 @@ public class Certifications {
     public void setProfileId(Long profileId) {
         this.profileId = profileId;
     }
-
-    private String name;
-    private String IssuingOrganisation;
-    private String credentialUrl;
-    private String credentialId;
-    private Date issueDate;
-    private Date expirationDate;
-    private Long profileId;
 
     public Long getId() {
         return id;

@@ -21,6 +21,16 @@ public class Education {
     private Date endDate;
     private String description;
 
+    private Long profileId;
+
+    public Long getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Long profileId) {
+        this.profileId = profileId;
+    }
+
     public String getSchool() {
         return school;
     }
