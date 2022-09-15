@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/certifications")
+@RequestMapping("/api/certifications")
 public class CertificationsController {
     final CertificationsRepository certificationsRepository;
 

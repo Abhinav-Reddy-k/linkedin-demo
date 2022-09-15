@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/jobtitles")
+@RequestMapping("/api/jobtitles")
 public class JobTitlesController {
     final JobTitleRepository jobTitleRepository;
 

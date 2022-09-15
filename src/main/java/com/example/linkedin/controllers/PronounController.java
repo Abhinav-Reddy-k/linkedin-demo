@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("pronouns")
+@RequestMapping("/api/pronouns")
 public class PronounController {
     final PronounRepository pronounRepository;
 
