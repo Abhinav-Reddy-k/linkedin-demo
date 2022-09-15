@@ -2,6 +2,8 @@ package com.example.linkedin.controllers;
 
 import com.example.linkedin.model.Profile;
 import com.example.linkedin.repositories.ProfileRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,15 +14,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/profiles")
 public class ProfileController {
+
     final
     ProfileRepository profileRepository;
 
     public ProfileController(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
+    }
+//
+    @PostMapping("/auth")
+    public ResponseEntity<?> authUser(@RequestBody Map<String, String> creds) {
+        Profile p = profileRepository.findProfileByEmailAndPassword(creds.get("email"), creds.get("password"));
+        if(p==null){
+            return new ResponseEntity<>("No user found", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(p, HttpStatus.ACCEPTED);
     }
 
     @GetMapping
@@ -57,9 +70,13 @@ public class ProfileController {
                 });
     }
 
-
     @DeleteMapping("/{id}")
     public void deleteProfile(@PathVariable Long id) {
         profileRepository.deleteById(id);
+    }
+
+    class Creds {
+        public String email;
+        public String password;
     }
 }
