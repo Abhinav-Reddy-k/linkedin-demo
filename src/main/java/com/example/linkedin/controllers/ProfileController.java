@@ -26,7 +26,7 @@ public class ProfileController {
     public ProfileController(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
     }
-//
+
     @PostMapping("/auth")
     public ResponseEntity<?> authUser(@RequestBody Map<String, String> creds) {
         Profile p = profileRepository.findProfileByEmailAndPassword(creds.get("email"), creds.get("password"));
