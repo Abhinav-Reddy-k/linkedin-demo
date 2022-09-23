@@ -1,19 +1,23 @@
-package com.example.linkedin.model;
+package com.example.linkedin.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "pronouns")
-public class Pronoun {
+@Entity(name = "Workplaces")
+public class Workplace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    private String name;
 
     public String getName() {
         return name;
@@ -21,12 +25,6 @@ public class Pronoun {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    private String name;
-
-    public Long getId() {
-        return id;
     }
 
     public void setId(Long id) {

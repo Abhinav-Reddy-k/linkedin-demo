@@ -1,7 +1,6 @@
 package com.example.linkedin.repositories;
 
-import com.example.linkedin.model.Address;
-import com.example.linkedin.model.Certifications;
+import com.example.linkedin.entities.Certifications;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

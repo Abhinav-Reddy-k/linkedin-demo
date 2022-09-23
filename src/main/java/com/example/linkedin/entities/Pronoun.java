@@ -1,27 +1,29 @@
-package com.example.linkedin.model;
+package com.example.linkedin.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "Skills")
-public class Skill {
+@Entity
+@Table(name = "pronouns")
+public class Pronoun {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    public String getTechnology() {
-        return technology;
+    public String getName() {
+        return name;
     }
 
-    public void setTechnology(String technology) {
-        this.technology = technology;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    private String technology;
+    private String name;
 
     public Long getId() {
         return id;

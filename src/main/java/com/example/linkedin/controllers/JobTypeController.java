@@ -1,7 +1,8 @@
 package com.example.linkedin.controllers;
 
-import com.example.linkedin.model.JobType;
-import com.example.linkedin.repositories.JobTypeRepository;
+import com.example.linkedin.entities.JobType;
+import com.example.linkedin.services.JobTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,54 +18,33 @@ import java.util.List;
 @RequestMapping("/api/jobtypes")
 public class JobTypeController {
 
-    final
-    JobTypeRepository jobTypeRepository;
-
-//    @Autowired
-//    PreferedJobTypeService preferedJobTypeService;
-
-    public JobTypeController(JobTypeRepository jobTypeRepository) {
-        this.jobTypeRepository = jobTypeRepository;
-    }
+    @Autowired
+    private JobTypeService jobTypeService;
 
     @GetMapping
-    public List<JobType> showJobTypes() {
-        return jobTypeRepository.findAll();
+    public List<JobType> getAllJobTypes() {
+        return jobTypeService.showJobTypes();
     }
 
     @GetMapping(value = "/{id}")
-    public JobType get(@PathVariable Long id) {
-        return jobTypeRepository.findById(id).get();
+    public JobType getJobTypeById(@PathVariable Long id) {
+        return jobTypeService.get(id);
     }
 
     @PostMapping
     public JobType createJobType(@RequestBody JobType jobType) {
-        return jobTypeRepository.save(jobType);
+        return jobTypeService.createJobType(jobType);
     }
 
     @PutMapping("/{id}")
     public JobType updateJobType(@PathVariable Long id, @RequestBody JobType jobType) {
-        return jobTypeRepository.findById(id)
-                .map(oldJobTypes -> {
-                    oldJobTypes.setName(jobType.getName());
-                    return jobTypeRepository.save(oldJobTypes);
-                })
-                .orElseGet(() -> {
-                    jobType.setId(id);
-                    return jobTypeRepository.save(jobType);
-                });
+        return jobTypeService.updateJobType(id, jobType);
     }
 
 
     @DeleteMapping("/{id}")
     public void deleteJobType(@PathVariable Long id) {
-        jobTypeRepository.deleteById(id);
+        jobTypeService.deleteJobType(id);
     }
-
-//    @PutMapping("/{jobId}/profiles/{profileId}")
-//    public JobType addProfileToJobType(@PathVariable Integer jobId, @PathVariable Integer profileId) {
-//        JobType jt = preferedJobTypeService.addPreferedJobType(profileId, jobId);
-//        return jobTypeRepository.save(jt);
-//    }
 
 }

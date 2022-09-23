@@ -1,7 +1,9 @@
 package com.example.linkedin.controllers;
 
-import com.example.linkedin.model.Address;
+import com.example.linkedin.entities.Address;
 import com.example.linkedin.repositories.AddressRepository;
+import com.example.linkedin.services.AddressService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,55 +19,39 @@ import java.util.List;
 @RequestMapping("/api/address")
 public class AddressController {
 
-    final
-    AddressRepository addressRepository;
+    @Autowired
+    private AddressService addressService;
 
 
-    public AddressController(AddressRepository addressRepository) {
-        this.addressRepository = addressRepository;
-    }
 
     @GetMapping
     public List<Address> getAllAddresses() {
-        return addressRepository.findAll();
+        return addressService.getAllAddresses();
     }
 
     @GetMapping(value = "/{id}")
     public Address get(@PathVariable Long id) {
-        return addressRepository.findById(id).get();
+        return addressService.get(id);
     }
 
     @GetMapping("/profile/{profileId}")
     public List<Address> getByProfile(@PathVariable Long profileId){
-        return addressRepository.findByProfileId(profileId);
+        return addressService.getByProfile(profileId);
     }
 
     @PostMapping
     public Address createAddress(@RequestBody Address address) {
-        return addressRepository.save(address);
+        return addressService.createAddress(address);
     }
 
     @PutMapping("/{id}")
     public Address updateAddress(@PathVariable Long id, @RequestBody Address address) {
-        return addressRepository.findById(id)
-                .map(oldAddress -> {
-                    oldAddress.setCity(address.getCity());
-                    oldAddress.setColony(address.getColony());
-                    oldAddress.setCountry(address.getCountry());
-                    oldAddress.sethNo(address.gethNo());
-                    oldAddress.setLocality(address.getLocality());
-                    oldAddress.setState(address.getState());
-                    return addressRepository.save(oldAddress);
-                })
-                .orElseGet(() -> {
-                    address.setId(id);
-                    return addressRepository.save(address);
-                });
+        return addressService.updateAddress(id,address);
     }
 
 
     @DeleteMapping("/{id}")
     public void deleteAddress(@PathVariable Long id) {
-        addressRepository.deleteById(id);
+       addressService.deleteAddress(id);
     }
 }

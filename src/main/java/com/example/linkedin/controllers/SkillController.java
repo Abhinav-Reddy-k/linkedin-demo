@@ -1,8 +1,8 @@
 package com.example.linkedin.controllers;
 
-import com.example.linkedin.model.Certifications;
-import com.example.linkedin.model.Skill;
-import com.example.linkedin.repositories.SkillRepository;
+import com.example.linkedin.entities.Skill;
+import com.example.linkedin.services.SkillService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,24 +17,22 @@ import java.util.List;
 @RequestMapping("/api/skill")
 public class SkillController {
 
-    final SkillRepository skillRepository;
-
-    public SkillController(SkillRepository skillRepository) {
-        this.skillRepository = skillRepository;
-    }
+    @Autowired
+    private SkillService skillService;
 
     @GetMapping
-    List<Skill> get(){
-        return skillRepository.findAll();
+    List<Skill> get() {
+        return skillService.get();
     }
 
 
     @DeleteMapping("/{id}")
     public void deleteSkill(@PathVariable Long id) {
-        skillRepository.deleteById(id);
+        skillService.deleteSkill(id);
     }
+
     @PostMapping
     public Skill createCertification(@RequestBody Skill skill) {
-        return skillRepository.save(skill);
+        return skillService.createCertification(skill);
     }
 }
