@@ -34,8 +34,8 @@ public class ProfileController {
     }
 
     @GetMapping(value = "/{id}")
-    public Profile get(@PathVariable Long id) {
-        return profileService.get(id);
+    public Profile getProfileById(@PathVariable Long id) {
+        return profileService.getProfileById(id);
     }
 
     @PostMapping

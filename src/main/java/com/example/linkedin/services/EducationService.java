@@ -16,15 +16,15 @@ public class EducationService {
         this.educationRepository = educationRepository;
     }
 
-    public List<Education> showEducation() {
+    public List<Education> getAllEducation() {
         return educationRepository.findAll();
     }
 
-    public List<Education> getByProfile(@PathVariable Long profileId){
+    public List<Education> getEducationByProfileId(@PathVariable Long profileId) {
         return educationRepository.findByProfileId(profileId);
     }
 
-    public Education get(@PathVariable Long id) {
+    public Education getEducationById(@PathVariable Long id) {
         return educationRepository.findById(id).get();
     }
 
@@ -32,7 +32,7 @@ public class EducationService {
         return educationRepository.save(jobType);
     }
 
-    public Education updateJobType(@PathVariable Long id, @RequestBody Education education) {
+    public Education updateEducation(@PathVariable Long id, @RequestBody Education education) {
         return educationRepository.findById(id)
                 .map(oldEducation -> {
                     oldEducation.setDegree(education.getDegree());

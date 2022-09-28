@@ -16,8 +16,8 @@ public class WorkPlacesController {
     private WorkplaceService workplaceService;
 
     @GetMapping
-    public List<Workplace> get() {
+    public List<Workplace> getAllWorkplace() {
         return
-                workplaceService.get();
+                workplaceService.getAllWorkplace();
     }
 }

@@ -20,15 +20,15 @@ public class ExperienceService {
         this.experienceRepository = experienceRepository;
     }
 
-    public List<Experience> get() {
+    public List<Experience> getAllExperience() {
         return experienceRepository.findAll();
     }
 
-    public Experience get(@PathVariable Long id) {
+    public Experience getExperienceById(@PathVariable Long id) {
         return experienceRepository.findById(id).get();
     }
 
-    public List<Experience> getByProfile(@PathVariable Long profileId) {
+    public List<Experience> getExperienceByProfile(@PathVariable Long profileId) {
         return experienceRepository.findByProfileId(profileId);
     }
 
@@ -50,7 +50,7 @@ public class ExperienceService {
     }
 
 
-    public void deleteJobType(@PathVariable Long id) {
+    public void deleteExperience(@PathVariable Long id) {
         experienceRepository.deleteById(id);
     }
 }

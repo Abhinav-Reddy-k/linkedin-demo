@@ -1,7 +1,6 @@
 package com.example.linkedin.controllers;
 
 import com.example.linkedin.entities.Address;
-import com.example.linkedin.repositories.AddressRepository;
 import com.example.linkedin.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,35 +22,34 @@ public class AddressController {
     private AddressService addressService;
 
 
-
     @GetMapping
     public List<Address> getAllAddresses() {
         return addressService.getAllAddresses();
     }
 
     @GetMapping(value = "/{id}")
-    public Address get(@PathVariable Long id) {
-        return addressService.get(id);
+    public Address getAddressById(@PathVariable Long id) {
+        return addressService.getAddressById(id);
     }
 
     @GetMapping("/profile/{profileId}")
-    public List<Address> getByProfile(@PathVariable Long profileId){
-        return addressService.getByProfile(profileId);
+    public List<Address> getAddressByProfileId(@PathVariable Long profileId) {
+        return addressService.getAddressByProfile(profileId);
     }
 
     @PostMapping
-    public Address createAddress(@RequestBody Address address) {
+    public Address createAddressById(@RequestBody Address address) {
         return addressService.createAddress(address);
     }
 
     @PutMapping("/{id}")
-    public Address updateAddress(@PathVariable Long id, @RequestBody Address address) {
-        return addressService.updateAddress(id,address);
+    public Address updateAddressById(@PathVariable Long id, @RequestBody Address address) {
+        return addressService.updateAddress(id, address);
     }
 
 
     @DeleteMapping("/{id}")
-    public void deleteAddress(@PathVariable Long id) {
-       addressService.deleteAddress(id);
+    public void deleteAddressById(@PathVariable Long id) {
+        addressService.deleteAddress(id);
     }
 }

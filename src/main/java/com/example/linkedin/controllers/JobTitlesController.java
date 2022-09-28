@@ -16,8 +16,8 @@ public class JobTitlesController {
     private JobTitlesService jobTitlesService;
 
     @GetMapping
-    private List<JobTitle> get(){
-        return jobTitlesService.get();
+    private List<JobTitle> getAllJobTitle() {
+        return jobTitlesService.getAllJobTitle();
     }
 
 

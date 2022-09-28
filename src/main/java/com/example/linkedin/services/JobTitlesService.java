@@ -10,11 +10,11 @@ import java.util.List;
 public class JobTitlesService {
     final JobTitleRepository jobTitleRepository;
 
-    public JobTitlesService( JobTitleRepository jobTitleRepository) {
+    public JobTitlesService(JobTitleRepository jobTitleRepository) {
         this.jobTitleRepository = jobTitleRepository;
     }
 
-    public List<JobTitle> get(){
+    public List<JobTitle> getAllJobTitle() {
         return jobTitleRepository.findAll();
     }
 

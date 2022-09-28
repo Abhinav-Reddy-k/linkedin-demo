@@ -1,7 +1,6 @@
 package com.example.linkedin.controllers;
 
 import com.example.linkedin.entities.Education;
-import com.example.linkedin.repositories.EducationRepository;
 import com.example.linkedin.services.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,18 +21,18 @@ public class EducationController {
     private EducationService educationService;
 
     @GetMapping
-    public List<Education> showEducation() {
-        return educationService.showEducation();
+    public List<Education> getAllEducation() {
+        return educationService.getAllEducation();
     }
 
     @GetMapping("/profile/{profileId}")
-    public List<Education> getByProfile(@PathVariable Long profileId){
-        return educationService.getByProfile(profileId);
+    public List<Education> getEducationByProfile(@PathVariable Long profileId) {
+        return educationService.getEducationByProfileId(profileId);
     }
 
     @GetMapping(value = "/{id}")
-    public Education get(@PathVariable Long id) {
-        return educationService.get(id);
+    public Education getEducation(@PathVariable Long id) {
+        return educationService.getEducationById(id);
     }
 
     @PostMapping
@@ -42,8 +41,8 @@ public class EducationController {
     }
 
     @PutMapping("/{id}")
-    public Education updateJobType(@PathVariable Long id, @RequestBody Education education) {
-        return educationService.updateJobType(id,education);
+    public Education updateEducation(@PathVariable Long id, @RequestBody Education education) {
+        return educationService.updateEducation(id, education);
     }
 
 

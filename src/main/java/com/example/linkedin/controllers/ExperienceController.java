@@ -22,18 +22,18 @@ public class ExperienceController {
     private ExperienceService experienceService;
 
     @GetMapping
-    public List<Experience> get() {
-        return experienceService.get();
+    public List<Experience> getAllExperience() {
+        return experienceService.getAllExperience();
     }
 
     @GetMapping(value = "/{id}")
-    public Experience get(@PathVariable Long id) {
-        return experienceService.get(id);
+    public Experience getExperienceById(@PathVariable Long id) {
+        return experienceService.getExperienceById(id);
     }
 
     @GetMapping("/profile/{profileId}")
-    public List<Experience> getByProfile(@PathVariable Long profileId) {
-        return experienceService.getByProfile(profileId);
+    public List<Experience> getExperienceByProfile(@PathVariable Long profileId) {
+        return experienceService.getExperienceByProfile(profileId);
     }
 
     @PostMapping
@@ -43,12 +43,12 @@ public class ExperienceController {
 
     @PutMapping("/{id}")
     public Experience updateExperience(@PathVariable Long id, @RequestBody Experience experience) {
-        return experienceService.updateExperience(id,experience);
+        return experienceService.updateExperience(id, experience);
     }
 
 
     @DeleteMapping("/{id}")
-    public void deleteJobType(@PathVariable Long id) {
-        experienceService.deleteJobType(id);
+    public void deleteExperience(@PathVariable Long id) {
+        experienceService.deleteExperience(id);
     }
 }

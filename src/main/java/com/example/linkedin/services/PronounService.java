@@ -3,7 +3,6 @@ package com.example.linkedin.services;
 import com.example.linkedin.entities.Pronoun;
 import com.example.linkedin.repositories.PronounRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class PronounService {
         this.pronounRepository = pronounRepository;
     }
 
-    public List<Pronoun> get(){
+    public List<Pronoun> get() {
         return pronounRepository.findAll();
     }
 

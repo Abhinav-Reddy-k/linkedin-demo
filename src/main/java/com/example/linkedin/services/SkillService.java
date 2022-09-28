@@ -17,16 +17,16 @@ public class SkillService {
         this.skillRepository = skillRepository;
     }
 
-    public List<Skill> get() {
+    public List<Skill> getAllSkill() {
         return skillRepository.findAll();
     }
 
 
-    public void deleteSkill(@PathVariable Long id) {
+    public void deleteSkillById(@PathVariable Long id) {
         skillRepository.deleteById(id);
     }
 
-    public Skill createCertification(@RequestBody Skill skill) {
+    public Skill createSkill(@RequestBody Skill skill) {
         return skillRepository.save(skill);
     }
 }

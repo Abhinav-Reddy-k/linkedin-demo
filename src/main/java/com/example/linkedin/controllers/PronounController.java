@@ -14,8 +14,9 @@ import java.util.List;
 public class PronounController {
     @Autowired
     private PronounService pronounService;
+
     @GetMapping
-    List<Pronoun> get(){
+    List<Pronoun> getAllPronoun() {
         return pronounService.get();
     }
 

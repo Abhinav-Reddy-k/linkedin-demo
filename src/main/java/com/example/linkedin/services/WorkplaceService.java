@@ -15,7 +15,7 @@ public class WorkplaceService {
         this.workplaceRepository = workplaceRepository;
     }
 
-    public List<Workplace> get() {
+    public List<Workplace> getAllWorkplace() {
         return workplaceRepository.findAll();
     }
 }

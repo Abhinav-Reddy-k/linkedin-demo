@@ -33,7 +33,7 @@ public class ProfileService {
         return profileRepository.findAll();
     }
 
-    public Profile get(@PathVariable Long id) {
+    public Profile getProfileById(@PathVariable Long id) {
         return profileRepository.findById(id).get();
     }
 

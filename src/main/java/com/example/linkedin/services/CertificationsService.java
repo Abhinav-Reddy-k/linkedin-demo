@@ -1,6 +1,6 @@
 package com.example.linkedin.services;
 
-import com.example.linkedin.entities.Certifications;
+import com.example.linkedin.entities.Certification;
 import com.example.linkedin.repositories.CertificationsRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,33 +16,33 @@ public class CertificationsService {
         this.certificationsRepository = certificationsRepository;
     }
 
-    public List<Certifications> showAllCertifications() {
+    public List<Certification> showAllCertifications() {
         return certificationsRepository.findAll();
     }
 
-    public List<Certifications> getByProfile(@PathVariable Long profileId) {
+    public List<Certification> getByProfile(@PathVariable Long profileId) {
         return certificationsRepository.findByProfileId(profileId);
     }
 
-    public Certifications updateJobType(@PathVariable Long id, @RequestBody Certifications certifications) {
+    public Certification updateCertification(@PathVariable Long id, @RequestBody Certification certification) {
         return certificationsRepository.findById(id)
                 .map(oldCertification -> {
-                    oldCertification.setCredentialId(certifications.getCredentialId());
-                    oldCertification.setCredentialUrl(certifications.getCredentialUrl());
-                    oldCertification.setName(certifications.getName());
-                    oldCertification.setExpirationDate(certifications.getExpirationDate());
-                    oldCertification.setIssueDate(certifications.getIssueDate());
-                    oldCertification.setIssuingOrganisation(certifications.getIssuingOrganisation());
+                    oldCertification.setCredentialId(certification.getCredentialId());
+                    oldCertification.setCredentialUrl(certification.getCredentialUrl());
+                    oldCertification.setName(certification.getName());
+                    oldCertification.setExpirationDate(certification.getExpirationDate());
+                    oldCertification.setIssueDate(certification.getIssueDate());
+                    oldCertification.setIssuingOrganisation(certification.getIssuingOrganisation());
                     return certificationsRepository.save(oldCertification);
                 })
-                .orElseGet(() -> certificationsRepository.save(certifications));
+                .orElseGet(() -> certificationsRepository.save(certification));
     }
 
     public void deleteCertification(@PathVariable Long id) {
         certificationsRepository.deleteById(id);
     }
 
-    public Certifications createCertification(@RequestBody Certifications jobType) {
+    public Certification createCertification(@RequestBody Certification jobType) {
         return certificationsRepository.save(jobType);
     }
 }

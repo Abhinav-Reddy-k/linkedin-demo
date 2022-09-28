@@ -22,17 +22,17 @@ public class SkillController {
 
     @GetMapping
     List<Skill> get() {
-        return skillService.get();
+        return skillService.getAllSkill();
     }
 
 
     @DeleteMapping("/{id}")
     public void deleteSkill(@PathVariable Long id) {
-        skillService.deleteSkill(id);
+        skillService.deleteSkillById(id);
     }
 
     @PostMapping
     public Skill createCertification(@RequestBody Skill skill) {
-        return skillService.createCertification(skill);
+        return skillService.createSkill(skill);
     }
 }

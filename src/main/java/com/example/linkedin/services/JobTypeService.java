@@ -44,4 +44,7 @@ public class JobTypeService {
     public void deleteJobType(@PathVariable Long id) {
         jobTypeRepository.deleteById(id);
     }
+
+
+
 }

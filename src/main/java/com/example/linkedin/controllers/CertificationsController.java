@@ -1,6 +1,6 @@
 package com.example.linkedin.controllers;
 
-import com.example.linkedin.entities.Certifications;
+import com.example.linkedin.entities.Certification;
 import com.example.linkedin.services.CertificationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,27 +21,27 @@ public class CertificationsController {
     private CertificationsService certificationsService;
 
     @GetMapping
-    public List<Certifications> showAllCertifications() {
+    public List<Certification> showAllCertifications() {
         return certificationsService.showAllCertifications();
     }
 
     @GetMapping("/profile/{profileId}")
-    public List<Certifications> getByProfile(@PathVariable Long profileId) {
+    public List<Certification> getCertificationsByProfile(@PathVariable Long profileId) {
         return certificationsService.getByProfile(profileId);
     }
 
     @PutMapping("/{id}")
-    public Certifications updateJobType(@PathVariable Long id, @RequestBody Certifications certifications) {
-        return certificationsService.updateJobType(id, certifications);
+    public Certification updateCertificationsById(@PathVariable Long id, @RequestBody Certification certification) {
+        return certificationsService.updateCertification(id, certification);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCertification(@PathVariable Long id) {
+    public void deleteCertificationById(@PathVariable Long id) {
         certificationsService.deleteCertification(id);
     }
 
     @PostMapping
-    public Certifications createCertification(@RequestBody Certifications jobType) {
+    public Certification createCertification(@RequestBody Certification jobType) {
         return certificationsService.createCertification(jobType);
     }
 }

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Certifications {
+public class Certification {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)

@@ -20,19 +20,20 @@ public class AddressService {
         return addressRepository.findAll();
     }
 
-    public Address get(@PathVariable Long id) {
+    public Address getAddressById(@PathVariable Long id) {
         return addressRepository.findById(id).get();
     }
 
-    public List<Address> getByProfile(@PathVariable Long profileId){
+    public List<Address> getAddressByProfile(@PathVariable Long profileId) {
         return addressRepository.findByProfileId(profileId);
     }
 
     public Address createAddress(@RequestBody Address address) {
         return addressRepository.save(address);
     }
+
     public Address updateAddress(@PathVariable Long id, @RequestBody Address address) {
-        return addressRepository.findById(id)
+        Address newAddress = addressRepository.findById(id)
                 .map(oldAddress -> {
                     oldAddress.setCity(address.getCity());
                     oldAddress.setColony(address.getColony());
@@ -46,6 +47,7 @@ public class AddressService {
                     address.setId(id);
                     return addressRepository.save(address);
                 });
+        return newAddress;
     }
 
     public void deleteAddress(@PathVariable Long id) {

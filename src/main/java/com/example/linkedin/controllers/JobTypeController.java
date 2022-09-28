@@ -26,8 +26,9 @@ public class JobTypeController {
         return jobTypeService.showJobTypes();
     }
 
+
     @GetMapping(value = "/{id}")
-    public JobType getJobTypeById(@PathVariable Long id) {
+    public JobType getJobTypeByProfileId(@PathVariable Long id) {
         return jobTypeService.get(id);
     }
 
