@@ -2,6 +2,7 @@ package com.example.linkedin.entities;
 
 import org.springframework.lang.NonNull;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "profile")
 public class Profile {
-
+    @Column(name = "id")
     private Long id;
 
     private String firstName;
@@ -89,6 +90,7 @@ public class Profile {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
@@ -98,4 +100,5 @@ public class Profile {
     public void setId(Long id) {
         this.id = id;
     }
+
 }

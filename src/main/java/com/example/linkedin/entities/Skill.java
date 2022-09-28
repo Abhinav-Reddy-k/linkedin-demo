@@ -1,10 +1,15 @@
 package com.example.linkedin.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.List;
 
 @Entity(name = "Skills")
 public class Skill {
@@ -12,6 +17,7 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    private String technology;
 
     public String getTechnology() {
         return technology;
@@ -21,8 +27,6 @@ public class Skill {
         this.technology = technology;
     }
 
-    private String technology;
-
     public Long getId() {
         return id;
     }
@@ -30,4 +34,5 @@ public class Skill {
     public void setId(Long id) {
         this.id = id;
     }
+
 }
